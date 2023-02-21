@@ -1,2 +1,5 @@
 # FYA
-For Your Amusement(&amp; Action)
+
+# 디자인
+
+- [디자인 링크](https://xd.adobe.com/view/cf8e2c97-83fb-4a62-bd96-85daf64824af-9add/)
