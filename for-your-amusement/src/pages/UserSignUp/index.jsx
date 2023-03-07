@@ -27,21 +27,39 @@ export function InputBox({ type = "text", useRef, ...props }) {
 
 export default function UserSignUp(props) {
   const [userId, setUserId] = useState("");
-
   const [userIdError, setUserIdError] = useState("");
   const [userIdValid, setUserIdValid] = useState("");
 
-  useEffect(() => {
-    const idRex = /^[a-z0-9]{6,20}/;
+  const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [passwordValid, setPasswordValid] = useState("");
 
-    if (!idRex.test(userId) && userId !== "") {
-      setUserIdError("6~20자의 영문 소문자+숫자만 사용 가능합니다");
+  useEffect(() => {
+    const userIdRex = /^[a-z0-9]{6,20}/;
+
+    if (!userIdRex.test(userId) && userId !== "") {
+      setUserIdError("6~20자의 영문 소문자+숫자만 사용 가능합니다.");
       setUserIdValid(false);
     } else {
       setUserIdError("");
       setUserIdValid(true);
     }
-  }, [id]);
+  }, [userId]);
+
+  useEffect(() => {
+    const passwordRex =
+      /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,20}$/;
+
+    if (!passwordRex.test(passwordRex)) {
+      setPasswordError(
+        "8~16자의 영문 대 소문자, 숫자, 특수문자만 사용 가능합니다."
+      );
+      setPasswordValid(false);
+    } else {
+      setPasswordError("");
+      setPasswordValid(true);
+    }
+  }, [password]);
 
   return (
     <S.FormContainer>
@@ -70,8 +88,7 @@ export default function UserSignUp(props) {
         <S.ErrMsg className="message">{passwordError}</S.ErrMsg>
       </S.InputForm>
       <LongBtn
-        disabled={idValid && passwordValid ? false : true}
-        onClick={sendData}
+        disabled={userIdValid && passwordValid ? false : true}
         message="회원가입"
       ></LongBtn>
     </S.FormContainer>
