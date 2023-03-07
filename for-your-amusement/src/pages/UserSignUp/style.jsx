@@ -12,7 +12,9 @@ export const FormContainer = styled.section`
 
 export const PageTitle = styled.h1``;
 
-export const TitleImg = styled.img``;
+export const TitleImg = styled.img`
+  background-image: url("../../assets/images/login_logo.svg");
+`;
 
 export const SignUpTitle = styled.h2`
   font-weight: 600;
