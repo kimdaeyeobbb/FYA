@@ -16,13 +16,6 @@ export const TitleImg = styled.img`
   background-image: url("../../assets/images/login_logo.svg");
 `;
 
-export const SignUpTitle = styled.h2`
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 30px;
-  color: #000000;
-`;
-
 export const InputForm = styled.form`
   margin: 70px 0 30px;
 `;
@@ -51,7 +44,7 @@ export const DisabledBtn = styled.button`
 
 export const AbledBtn = styled(DisabledBtn)`
   background-color: ${(props) => props.theme.mainColor};
-  color: white;
+  color: #fff;
   cursor: pointer;
 `;
 

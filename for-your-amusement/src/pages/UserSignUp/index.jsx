@@ -65,7 +65,6 @@ export default function UserSignUp(props) {
     <S.FormContainer>
       <S.PageTitle className="ir">FYA 회원가입 화면</S.PageTitle>
       <S.TitleImg src={fya} alt="로고 이미지" />
-      <S.SignUpTitle>회원가입</S.SignUpTitle>
       <S.InputForm>
         <InputBox
           id="userId"
