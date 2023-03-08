@@ -4,7 +4,7 @@ export const FormContainer = styled.section`
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 80vh;
+  height: 100vh;
   width: 100vw;
   margin-top: 30px;
   font-family: "Spoqa Han Sans Neo", "sans-serif";
@@ -32,9 +32,9 @@ export const DisabledBtn = styled.button`
   display: block;
   margin: 0 auto;
   text-align: center;
-  width: 322px;
-  height: 44px;
-  border-radius: 44px;
+  width: 500px;
+  height: 70px;
+  border-radius: 20px;
   font-family: "Spoqa Han Sans Neo";
   font-style: normal;
   font-weight: 500;
@@ -54,31 +54,23 @@ export const InputContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 322px;
+  width: 500px;
   color: #767676;
   font-weight: 500;
 `;
 
-export const Label = styled.label`
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-size: 12px;
-  line-height: 15px;
-`;
-
 export const Input = styled.input`
+  background-color: #f8f8f8;
+  border: none;
   width: inherit;
   padding-top: 16px;
   margin-bottom: 16px;
   height: 48px;
-  border: 0;
-  border-bottom: 1px solid #dbdbdb;
   font-size: 14px;
 
   &:focus {
     outline: 0;
-    border-bottom: 2px solid #4d82d4;
+    border: 2px solid #5ba7a7;
   }
 
   &::placeholder {

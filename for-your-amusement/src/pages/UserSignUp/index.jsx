@@ -18,7 +18,6 @@ export function InputBox({ type = "text", useRef, ...props }) {
   return (
     <>
       <S.InputContainer>
-        <S.Label htmlFor={props.id}>{props.labelText}</S.Label>
         <S.Input type={type} ref={useRef} {...props} />
       </S.InputContainer>
     </>
@@ -68,7 +67,13 @@ export default function UserSignUp(props) {
       <S.InputForm>
         <InputBox
           id="userId"
-          labelText="사용자아이디"
+          placeholder="아이디"
+          onChange={(e) => {
+            setUserId(e.target.value);
+          }}
+        />
+        <InputBox
+          id="userId"
           placeholder="아이디"
           onChange={(e) => {
             setUserId(e.target.value);
@@ -78,7 +83,6 @@ export default function UserSignUp(props) {
         <InputBox
           type="password"
           id="password"
-          labelText="비밀번호"
           placeholder="비밀번호를 설정해주세요"
           onChange={(e) => {
             setPassword(e.target.value);
