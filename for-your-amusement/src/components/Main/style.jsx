@@ -44,16 +44,14 @@ export const MainRandomGameBtn = styled.button`
   color: #fff;
 `;
 
-export const MainGameSection = styled.section`
+export const MainGameListContainer = styled.ul`
   margin-top: 68px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 30px;
 `;
 
-export const MainGameListContainer = styled.ul``;
-
-export const MainGame = styled.div`
+export const MainGameList = styled.div`
   width: 380px;
   height: 380px;
   background: #e2e2e2 0% 0% no-repeat padding-box;
@@ -61,13 +59,13 @@ export const MainGame = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
 
-  & p {
-    display: inline-block;
-    font: normal normal normal 30px/45px Noto Sans CJK KR;
-    letter-spacing: 0;
-    color: #000;
-  }
+export const MainGameTitle = styled.strong`
+  display: inline-block;
+  font: normal normal normal 30px/45px Noto Sans CJK KR;
+  letter-spacing: 0;
+  color: #000;
 `;
 
 export const MainGameThumbnail = styled.img`

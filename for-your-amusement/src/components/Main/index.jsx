@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-// import { Link } from 'react-router-dom';
-import * as S from './Style';
+import { Link } from 'react-router-dom';
+import TestThumbnail from '../../assets/images/test_thumbnail.jpeg';
+import * as S from './style';
 
 export const game_data = [
   {
@@ -85,7 +86,19 @@ export default function Main() {
         </S.MainGameTypeContainer>
         <S.MainRandomGameBtn type='button'>랜덤 게임뽑기</S.MainRandomGameBtn>
       </S.MainBtnsSection>
-      <S.MainGameSection></S.MainGameSection>
+      <S.MainGameListContainer>
+        {gameData.map((data) => (
+          <S.MainGameList>
+            <Link to='/'>
+              <S.MainGameThumbnail
+                src={data.thumbnail || TestThumbnail}
+                alt={data.title || 'Comming Soon'}
+              />
+              <S.MainGameTitle>{data.title || 'Comming Soon'}</S.MainGameTitle>
+            </Link>
+          </S.MainGameList>
+        ))}
+      </S.MainGameListContainer>
     </S.MainContainer>
   );
 }

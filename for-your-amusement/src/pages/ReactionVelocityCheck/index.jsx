@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import Header from '../../components/Header/Index';
+import Header from '../../components/Header';
 
 export default function ReactionVelocityCheck() {
   const [state, setState] = useState('waiting');
