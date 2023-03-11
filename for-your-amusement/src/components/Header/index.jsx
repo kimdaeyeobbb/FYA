@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from './style';
+import * as S from './Style';
 import LogoImg from '../../assets/images/main_logo.svg';
 import UserImg from '../../assets/images/person_icon.svg';
 
