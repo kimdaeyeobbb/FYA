@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const HeaderWrapper = styled.header`
-  padding: 39.01px 155px 34.69px;
+  box-sizing: inherit;
   width: 100%;
-  max-width: 1920px;
   margin: 0 auto;
+  padding: 39.01px 155px 34.69px;
   border-bottom: 0.5px solid rgb(219, 219, 219);
   display: flex;
   justify-content: space-between;

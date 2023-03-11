@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const MainContainer = styled.main`
+  box-sizing: inherit;
   width: 100%;
-  max-width: 1920px;
   margin: 0 auto;
   padding: 170px 155px 198px;
   background-color: red;
@@ -49,4 +49,21 @@ export const MainGameSection = styled.section`
   display: flex;
   flex-wrap: wrap;
   flex-basis: 1920px;
+`;
+
+export const MainGameLink = styled.div`
+  width: 380px;
+  height: 380px;
+  background: #e2e2e2 0% 0% no-repeat padding-box;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & p {
+    display: inline;
+    font: normal normal normal 30px/45px Noto Sans CJK KR;
+    letter-spacing: 0;
+    color: #000;
+  }
 `;
