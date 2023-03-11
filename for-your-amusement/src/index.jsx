@@ -10,7 +10,8 @@ const GlobalStyle = createGlobalStyle`
 
   #root {
     font-family: Noto Sans CJK KR;
-    width: 1920px;
+    margin: 0 auto;
+    max-width: 1920px;
     box-sizing: border-box;
   }
 
