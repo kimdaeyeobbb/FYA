@@ -8,8 +8,10 @@ import { theme } from './theme';
 const GlobalStyle = createGlobalStyle`
   ${reset}
 
-  body {
+  #root {
     font-family: Noto Sans CJK KR;
+    max-width: 1920px;
+    box-sizing: border-box;
   }
 
   .ir {
