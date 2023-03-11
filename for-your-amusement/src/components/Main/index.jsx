@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import * as S from './Style';
 
 export const game_data = [
@@ -72,6 +72,8 @@ export default function Main() {
     setGameData(game_data);
   }, []);
 
+  console.log(gameData);
+
   return (
     <S.MainContainer>
       <S.MainBtnsSection>
@@ -83,20 +85,7 @@ export default function Main() {
         </S.MainGameTypeContainer>
         <S.MainRandomGameBtn type='button'>랜덤 게임뽑기</S.MainRandomGameBtn>
       </S.MainBtnsSection>
-      <S.MainGameSection>
-        {gameData.map((data) => (
-          <S.MainGameListContainer>
-            {/* <Link to='/'>
-              <S.MainGame>
-                <S.MainGameThumbnail
-                  src={data.thumbnail || ''}
-                  alt={data.title || 'Comming Soon'}
-                />
-              </S.MainGame>
-            </Link> */}
-          </S.MainGameListContainer>
-        ))}
-      </S.MainGameSection>
+      <S.MainGameSection></S.MainGameSection>
     </S.MainContainer>
   );
 }
