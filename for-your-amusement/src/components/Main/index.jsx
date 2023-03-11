@@ -1,7 +1,77 @@
-import React from 'react';
-import * as S from './style';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import * as S from './Style';
 
-const index = () => {
+export const game_data = [
+  {
+    id: 1,
+    title: '숫자야구',
+    thumbnail: '',
+  },
+  {
+    id: 2,
+    title: '반응속도체크',
+    thumbnail: '',
+  },
+  {
+    id: 3,
+    title: '가위바위보',
+    thumbnail: '',
+  },
+  {
+    id: 4,
+    title: '로또추첨기',
+    thumbnail: '',
+  },
+  {
+    id: 5,
+    title: '틱택토',
+    thumbnail: '',
+  },
+  {
+    id: 6,
+    title: '지뢰찾기',
+    thumbnail: '',
+  },
+  {
+    id: 7,
+    title: '',
+    thumbnail: '',
+  },
+  {
+    id: 8,
+    title: '',
+    thumbnail: '',
+  },
+  {
+    id: 9,
+    title: '',
+    thumbnail: '',
+  },
+  {
+    id: 10,
+    title: '',
+    thumbnail: '',
+  },
+  {
+    id: 11,
+    title: '',
+    thumbnail: '',
+  },
+  {
+    id: 12,
+    title: '',
+    thumbnail: '',
+  },
+];
+
+export default function Main() {
+  const [gameData, setGameData] = useState([]);
+
+  useEffect(() => {
+    setGameData(game_data);
+  }, []);
+
   return (
     <S.MainContainer>
       <S.MainBtnsSection>
@@ -13,9 +83,20 @@ const index = () => {
         </S.MainGameTypeContainer>
         <S.MainRandomGameBtn type='button'>랜덤 게임뽑기</S.MainRandomGameBtn>
       </S.MainBtnsSection>
-      <S.MainGameSection>게임들</S.MainGameSection>
+      <S.MainGameSection>
+        {gameData.map((data) => (
+          <S.MainGameListContainer>
+            {/* <Link to='/'>
+              <S.MainGame>
+                <S.MainGameThumbnail
+                  src={data.thumbnail || ''}
+                  alt={data.title || 'Comming Soon'}
+                />
+              </S.MainGame>
+            </Link> */}
+          </S.MainGameListContainer>
+        ))}
+      </S.MainGameSection>
     </S.MainContainer>
   );
-};
-
-export default index;
+}
