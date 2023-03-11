@@ -13,9 +13,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/userlogin" element={<UserLogin />} />
         <Route path="/usersignup" element={<UserSignUp />} />
-        <Route path="/reactionvelocitycheck" element={ReactionVelocityCheck} />
+        <Route path="/reactionvelocitycheck" element={<ReactionVelocityCheck/>} />
         <Route path="/rockpaperscissors" element={<RockPaperScissors />} />
-        <Route path="/lotterymachine" element={LotteryMachine} />
+        <Route path="/lotterymachine" element={<LotteryMachine/>} />
       </Routes>
     </Router>
   );
