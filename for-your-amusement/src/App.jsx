@@ -4,7 +4,7 @@ import UserLogin from "./pages/UserLogin";
 import UserSignUp from "./pages/UserSignUp";
 import ReactionVelocityCheck from "./pages/ReactionVelocityCheck";
 import LotteryMachine from "./pages/LotteryMachine";
-import RockPaperScissors from "./pages/rockPaperScissors";
+import RockPaperScissors from "./pages/RockPaperScissors";
 
 function App() {
   return (
