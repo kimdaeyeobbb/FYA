@@ -5,7 +5,6 @@ export const MainContainer = styled.main`
   width: 100%;
   margin: 0 auto;
   padding: 170px 155px 198px;
-  background-color: red;
 `;
 
 export const MainBtnsSection = styled.section`
@@ -51,24 +50,31 @@ export const MainGameListContainer = styled.ul`
   gap: 30px;
 `;
 
-export const MainGameList = styled.div`
+export const MainGameList = styled.li`
+  position: relative;
   width: 380px;
   height: 380px;
   background: #e2e2e2 0% 0% no-repeat padding-box;
   border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  overflow: hidden;
 `;
 
 export const MainGameTitle = styled.strong`
-  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  display: block;
+  text-align: center;
   font: normal normal normal 30px/45px Noto Sans CJK KR;
   letter-spacing: 0;
   color: #000;
 `;
 
 export const MainGameThumbnail = styled.img`
+  opacity: 50%;
   width: 100%;
   height: 100%;
 `;

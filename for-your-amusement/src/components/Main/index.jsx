@@ -7,32 +7,32 @@ export const game_data = [
   {
     id: 1,
     title: '숫자야구',
-    thumbnail: '',
+    thumbnail: TestThumbnail,
   },
   {
     id: 2,
     title: '반응속도체크',
-    thumbnail: '',
+    thumbnail: TestThumbnail,
   },
   {
     id: 3,
     title: '가위바위보',
-    thumbnail: '',
+    thumbnail: TestThumbnail,
   },
   {
     id: 4,
     title: '로또추첨기',
-    thumbnail: '',
+    thumbnail: TestThumbnail,
   },
   {
     id: 5,
     title: '틱택토',
-    thumbnail: '',
+    thumbnail: TestThumbnail,
   },
   {
     id: 6,
     title: '지뢰찾기',
-    thumbnail: '',
+    thumbnail: TestThumbnail,
   },
   {
     id: 7,
@@ -91,7 +91,7 @@ export default function Main() {
           <S.MainGameList>
             <Link to='/'>
               <S.MainGameThumbnail
-                src={data.thumbnail || TestThumbnail}
+                src={data.thumbnail}
                 alt={data.title || 'Comming Soon'}
               />
               <S.MainGameTitle>{data.title || 'Comming Soon'}</S.MainGameTitle>
