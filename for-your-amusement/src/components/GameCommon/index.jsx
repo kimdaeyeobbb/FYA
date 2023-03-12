@@ -15,7 +15,7 @@ export default function GameCommon({ gameDesc }) {
         <S.GameDetailTitle>게임 설명</S.GameDetailTitle>
         <S.GameDetailDesc>{gameDesc}</S.GameDetailDesc>
       </S.GameDetail>
-      <S.GameMore>
+      <S.GameMore to='/'>
         <S.GameMoreText>게임 전체보기</S.GameMoreText>
         <S.GameMoreImg src={ArrowImg} alt='' />
       </S.GameMore>
