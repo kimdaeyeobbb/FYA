@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import TestThumbnail from '../../assets/images/test_thumbnail.jpeg';
-import reactionThumbnail from '../../assets/images/reactionThumbnail_img.png'
-import lottoThumbnail from '../../assets/images/lottoThumbnail_img.png'
-import rspThumbnail from '../../assets/images/rspThumbnail_img.png'
+import DefaultImg from '../../assets/images/default_image.svg';
+import reactionThumbnail from '../../assets/images/reactionThumbnail_img.png';
+import lottoThumbnail from '../../assets/images/lottoThumbnail_img.png';
+import rspThumbnail from '../../assets/images/rspThumbnail_img.png';
 import * as S from './style';
 
 export const game_data = [
-
   {
     id: 1,
     title: '반응속도체크',
@@ -95,7 +94,7 @@ export default function Main() {
           <S.MainGameList>
             <Link to='/'>
               <S.MainGameThumbnail
-                src={data.thumbnail}
+                src={data.thumbnail || DefaultImg}
                 alt={data.title || 'Comming Soon'}
               />
               <S.MainGameTitle>{data.title || 'Comming Soon'}</S.MainGameTitle>
