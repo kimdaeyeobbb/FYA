@@ -1,38 +1,42 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import TestThumbnail from '../../assets/images/test_thumbnail.jpeg';
+import reactionThumbnail from '../../assets/images/reactionThumbnail_img.png'
+import lottoThumbnail from '../../assets/images/lottoThumbnail_img.png'
+import rspThumbnail from '../../assets/images/rspThumbnail_img.png'
 import * as S from './style';
 
 export const game_data = [
+
   {
     id: 1,
-    title: '숫자야구',
-    thumbnail: TestThumbnail,
+    title: '반응속도체크',
+    thumbnail: reactionThumbnail,
   },
   {
     id: 2,
-    title: '반응속도체크',
-    thumbnail: TestThumbnail,
+    title: '가위바위보',
+    thumbnail: rspThumbnail,
   },
   {
     id: 3,
-    title: '가위바위보',
-    thumbnail: TestThumbnail,
+    title: '로또추첨기',
+    thumbnail: lottoThumbnail,
   },
   {
     id: 4,
-    title: '로또추첨기',
-    thumbnail: TestThumbnail,
+    title: 'Comming Soon',
+    thumbnail: '',
   },
   {
     id: 5,
-    title: '틱택토',
-    thumbnail: TestThumbnail,
+    title: 'Comming Soon',
+    thumbnail: '',
   },
   {
     id: 6,
-    title: '지뢰찾기',
-    thumbnail: TestThumbnail,
+    title: 'Comming Soon',
+    thumbnail: '',
   },
   {
     id: 7,

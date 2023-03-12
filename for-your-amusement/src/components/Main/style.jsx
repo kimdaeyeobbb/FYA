@@ -15,7 +15,7 @@ export const MainBtnsSection = styled.section`
 export const MainGameTypeContainer = styled.div``;
 
 export const MainGameTypeBtn = styled.button`
-  width: 180px;
+  //width: 180px;
   height: 70px;
   background: #e2e2e2 0% 0% no-repeat padding-box;
   border-radius: 43px;
@@ -70,11 +70,11 @@ export const MainGameTitle = styled.strong`
   text-align: center;
   font: normal normal normal 30px/45px Noto Sans CJK KR;
   letter-spacing: 0;
-  color: #000;
+  color: #FFF;
 `;
 
 export const MainGameThumbnail = styled.img`
-  opacity: 50%;
+  opacity: 0.9;
   width: 100%;
   height: 100%;
 `;
