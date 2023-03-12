@@ -3,6 +3,8 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import * as S from './style'
 import GameHeader from "../../components/GameHeader";
+import GameCommon from "../../components/GameCommon";
+import GameLayout from "../../components/GameLayout";
 
 export default function LotteryMachine() {
   /* 로또 당첨숫자 뽑기 */
@@ -100,15 +102,20 @@ export default function LotteryMachine() {
   return (
       <>
         <Header/>
-        <GameHeader gametitle="로또추첨기"/>
-        {/*<Ball/>*/}
-        <div>당첨 숫자</div>
-        {redo && <button onClick={onClickRedo}>한 번 더!</button>}
-        <div id="결과창">
-          {winBalls.map((v) => <Ball key={v} number={v} />)}
-        </div>
-        <div>보너스!</div>
-        {bonus && <Ball number={bonus} onClick={onClickRedo} />}
+
+
+        <GameLayout>
+          <GameHeader gameTitle='로또추첨기' />
+          {/*<Ball/>*/}
+          <div>당첨 숫자</div>
+          {redo && <button onClick={onClickRedo}>한 번 더!</button>}
+          <div id="결과창">
+            {winBalls.map((v) => <Ball key={v} number={v} />)}
+          </div>
+          <div>보너스!</div>
+          {bonus && <Ball number={bonus} onClick={onClickRedo} />}
+          <GameCommon gameDesc='로또 번호를 하나씩 차례대로 선택하고 로또 번호와 일치하는 번호가 가장 많은 팀이 승리합니다.' />
+        </GameLayout>
         <Footer/>
       </>
   )
