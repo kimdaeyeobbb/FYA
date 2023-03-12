@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './style';
 
-export default function GameHeader({ gametitle }) {
-  return <S.GameHeadTwo>{gametitle}</S.GameHeadTwo>;
+export default function GameHeader({ gameTitle }) {
+  return <S.GameHeadTwo>{gameTitle}</S.GameHeadTwo>;
 }
