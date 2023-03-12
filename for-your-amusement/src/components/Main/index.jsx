@@ -25,17 +25,17 @@ export const game_data = [
   },
   {
     id: 4,
-    title: 'Comming Soon',
+    title: '',
     thumbnail: '',
   },
   {
     id: 5,
-    title: 'Comming Soon',
+    title: '',
     thumbnail: '',
   },
   {
     id: 6,
-    title: 'Comming Soon',
+    title: '',
     thumbnail: '',
   },
   {
