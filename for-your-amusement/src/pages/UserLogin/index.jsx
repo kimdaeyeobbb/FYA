@@ -46,7 +46,7 @@ export default function UserLogin() {
   return (
     <>
       <S.FormContainer>
-        <S.PageTitle className='ir'>FYA 회원가입 화면</S.PageTitle>
+        <S.PageTitle className='ir'>FYA 로그인 화면</S.PageTitle>
         <Link to='/'>
           <S.LogoImg src={MainLogo} alt='로고 이미지' />
         </Link>
