@@ -107,9 +107,9 @@ export default function RockPaperScissors() {
     <>
       <Header />
       <GameLayout>
-        <GameHeader gametitle='가위바위보' />
+        <GameHeader gameTitle='가위바위보' />
         <RSP />
-        <GameCommon />
+        <GameCommon gameDesc='화면의 가위바위보 중 원하는 것을 선택하여 컴퓨터가 내는 것을 이기면 됩니다.' />
       </GameLayout>
       <Footer />
     </>
