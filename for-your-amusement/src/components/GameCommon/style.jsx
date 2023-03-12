@@ -11,6 +11,10 @@ export const ButtonContainer = styled.section`
   flex-direction: row;
   justify-content: end;
   margin-bottom: 182px;
+
+  > button + button {
+    margin-left: 10px;
+  }
 `;
 
 export const GameDetail = styled.section`
