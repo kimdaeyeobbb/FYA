@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback, memo} from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import * as S from './style'
+import GameHeader from "../../components/GameHeader";
 
 export default function LotteryMachine() {
   /* 로또 당첨숫자 뽑기 */
@@ -15,6 +17,7 @@ export default function LotteryMachine() {
     const winNumbers = shuffle.slice(0, 6).sort((p, c) => p - c);
     return [...winNumbers, bonusNumber];
   }
+
 
   /* 로또 공 - 함수 컴포넌트 (memo쓰면 pure component) */
   const Ball = memo(({ number }) => {
@@ -35,8 +38,19 @@ export default function LotteryMachine() {
       background = '#FF7408';
     }
 
+
+
+    const BallDetail = () =>{
+      return (
+          <>
+            <div style={background}>
+            </div>
+          </>
+      )
+    }
     return (
-        <div className="ball" style={{ background }}>{number}</div>
+        // <div className="ball" style={{ background }}>{number}</div>
+        <S.BallDetail>{number}</S.BallDetail>
     )
   });
 
@@ -86,14 +100,15 @@ export default function LotteryMachine() {
   return (
       <>
         <Header/>
-        <Ball/>
+        <GameHeader gametitle="로또추첨기"/>
+        {/*<Ball/>*/}
         <div>당첨 숫자</div>
+        {redo && <button onClick={onClickRedo}>한 번 더!</button>}
         <div id="결과창">
           {winBalls.map((v) => <Ball key={v} number={v} />)}
         </div>
         <div>보너스!</div>
         {bonus && <Ball number={bonus} onClick={onClickRedo} />}
-        {redo && <button onClick={onClickRedo}>한 번 더!</button>}
         <Footer/>
       </>
   )

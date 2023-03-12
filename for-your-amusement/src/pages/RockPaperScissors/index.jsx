@@ -1,5 +1,8 @@
 import React, {useState, useRef, useEffect} from "react";
 import Header from "../../components/Header";
+import * as S from './style'
+import Footer from "../../components/Footer";
+import GameHeader from "../../components/GameHeader";
 
 export default function RockPaperScissors() {
 
@@ -66,10 +69,18 @@ export default function RockPaperScissors() {
       }, 1000);
     };
 
+    // const ComRSP = () => {
+    //   return (
+    //       <>
+    //         <div id="computer" style={{background: `url:(https://en.pimg.jp/023/182/267/1/23182267.jpg) ${imgCoord} 0`}}/>
+    //       </>
+    //   )
+    // }
+
     return (
       <>
-        <Header/>
-        <div id="computer" style={{background: `url:(https://en.ping.jp/023/182/267/1/23182267.jpg) ${imgCoord} 0`}}/>
+        <S.ComRSP/>
+        <div id="computer" style={{background: `url:(https://en.pimg.jp/023/182/267/1/23182267.jpg) ${imgCoord} 0`}}/>
         <div>
           <button id="rock" className="btn" onClick={onClickBtn('바위')}>바위</button>
           <button id="scissor" className="btn" onClick={onClickBtn('가위')}>가위</button>
@@ -83,7 +94,10 @@ export default function RockPaperScissors() {
 
   return (
       <>
+        <Header/>
+        <GameHeader gametitle="가위바위보"/>
         <RSP/>
+        <Footer/>
       </>
   )
 }
