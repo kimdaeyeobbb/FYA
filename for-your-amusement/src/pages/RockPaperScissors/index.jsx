@@ -1,10 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
-import Header from '../../components/Header';
-import GameHeader from '../../components/GameHeader';
-import GameCommon from '../../components/GameCommon';
-import Footer from '../../components/Footer';
-import * as S from './style';
-import GameLayout from '../../components/GameLayout';
+import React, {useState, useRef, useEffect} from "react";
+import Header from "../../components/Header";
+import * as S from './style'
+import Footer from "../../components/Footer";
+import GameHeader from "../../components/GameHeader";
+import GameLayout from "../../components/GameLayout";
+import GameCommon from "../../components/GameCommon";
 
 export default function RockPaperScissors() {
   const rspCoords = {
@@ -68,14 +68,6 @@ export default function RockPaperScissors() {
         interval.current = setInterval(changeHand, 100);
       }, 1000);
     };
-
-    // const ComRSP = () => {
-    //   return (
-    //       <>
-    //         <div id="computer" style={{background: `url:(https://en.pimg.jp/023/182/267/1/23182267.jpg) ${imgCoord} 0`}}/>
-    //       </>
-    //   )
-    // }
 
     return (
       <>
