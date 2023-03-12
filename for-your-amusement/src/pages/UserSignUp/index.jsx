@@ -35,9 +35,9 @@ export default function UserSignUp() {
 
   useEffect(() => {
     const passwordRex =
-      /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,20}$/;
+        /^[a-zA-Z0-9]{8,20}$/;
 
-    if (!passwordRex.test(passwordRex)) {
+    if (!passwordRex.test(password)) {
       setPasswordError(
         '8~16자의 영문 대 소문자, 숫자, 특수문자만 사용 가능합니다.'
       );
