@@ -5,6 +5,7 @@ import Footer from "../../components/Footer";
 import GameHeader from "../../components/GameHeader";
 import GameLayout from "../../components/GameLayout";
 import GameCommon from "../../components/GameCommon";
+import RSPimg from '../../assets/images/RSPset_img.svg';
 
 export default function RockPaperScissors() {
   const rspCoords = {
@@ -20,24 +21,26 @@ export default function RockPaperScissors() {
   };
 
   const computerChoice = (imgCoord) => {
-    return Object.entries(rspCoords).find(function (v) {
+    return Object.entries(rspCoords).find(function(v) {
       return v[1] === imgCoord;
     })[0];
   };
+
 
   const RSP = () => {
     const [result, setResult] = useState('');
     const [imgCoord, setImgCoord] = useState(rspCoords.바위);
     const [score, setScore] = useState(0);
+    const [comScore, setComScore] = useState(0);
     const interval = useRef();
 
-    useEffect(() => {
+    useEffect(() => { // componentDidMount, componentDidUpdate 역할(1대1 대응은 아님)
       console.log('다시 실행');
       interval.current = setInterval(changeHand, 100);
-      return () => {
+      return () => { // componentWillUnmount 역할
         console.log('종료');
         clearInterval(interval.current);
-      };
+      }
     }, [imgCoord]);
 
     const changeHand = () => {
@@ -51,47 +54,49 @@ export default function RockPaperScissors() {
     };
 
     const onClickBtn = (choice) => () => {
-      clearInterval(interval.current);
-      const myScore = scores[choice];
-      const cpuScore = scores[computerChoice(imgCoord)];
-      const diff = myScore - cpuScore;
-      if (diff === 0) {
-        setResult('비겼습니다!');
-      } else if ([-1, 2].includes(diff)) {
-        setResult('이겼습니다!');
-        setScore((prevScore) => prevScore + 1);
-      } else {
-        setResult('졌습니다!');
-        setScore((prevScore) => prevScore - 1);
+      if (interval.current) {
+        clearInterval(interval.current);
+        interval.current = null;
+        const myScore = scores[choice];
+        const cpuScore = scores[computerChoice(imgCoord)];
+        const diff = myScore - cpuScore;
+        if (diff === 0) {
+          setResult('비겼습니다!');
+        } else if ([-1, 2].includes(diff)) {
+          setResult('이겼습니다!');
+          setScore((prevScore) => prevScore + 1);
+          setComScore((prevScore) => prevScore-1);
+        } else {
+          setResult('졌습니다!');
+          setScore((prevScore) => prevScore - 1);
+          setComScore((prevScore) => prevScore+1);
+        }
+        setTimeout(() => {
+          interval.current = setInterval(changeHand, 100);
+        }, 1000);
       }
-      setTimeout(() => {
-        interval.current = setInterval(changeHand, 100);
-      }, 1000);
     };
+    //
+    // const styles = {
+    //   computer: {
+    //     width: 142,
+    //     height: 200,
+    //     background-position: 0 0
+    //   }
+    // }
 
     return (
-      <>
-        <S.ComRSP />
-        <div
-          id='computer'
-          style={{
-            background: `url:(https://en.pimg.jp/023/182/267/1/23182267.jpg) ${imgCoord} 0`,
-          }}
-        />
-        <div>
-          <button id='rock' className='btn' onClick={onClickBtn('바위')}>
-            바위
-          </button>
-          <button id='scissor' className='btn' onClick={onClickBtn('가위')}>
-            가위
-          </button>
-          <button id='paper' className='btn' onClick={onClickBtn('보')}>
-            보
-          </button>
-        </div>
-        <div>{result}</div>
-        <div>현재 {score}점</div>
-      </>
+        <>
+          <div>컴퓨터: {comScore}점 vs 나: {score}점</div>
+          <div id="computer" style={{ background: `url(https://en.pimg.jp/023/182/267/1/23182267.jpg) ${imgCoord} 0`, width: 142, height:200}} />
+          <div id="computer" style={{ background: `url(${RSPimg}) ${imgCoord} 0`, width: 900, height:322}} />
+          <div>
+            <button id="rock" className="btn" onClick={onClickBtn('바위')}>바위</button>
+            <button id="scissor" className="btn" onClick={onClickBtn('가위')}>가위</button>
+            <button id="paper" className="btn" onClick={onClickBtn('보')}>보</button>
+          </div>
+          <div>{result}</div>
+        </>
     );
   };
 
