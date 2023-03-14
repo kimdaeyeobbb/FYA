@@ -94,8 +94,8 @@ export default function RockPaperScissors() {
 
     return (
       <>
-        <div>
-          컴퓨터: {comScore}점 vs 나: {score}점
+        <div style={{display:"inline-block",  width:240, height:80 ,background:"#6B8CBF"}}>
+          컴퓨터: {comScore} VS 나: {score}
         </div>
         {/*<div id="computer" style={{ background: `url(https://en.pimg.jp/023/182/267/1/23182267.jpg) ${imgCoord} 0`, width: 142, height:200}} />*/}
           <div style={{display: "flex", justifyContent:"space-evenly"
