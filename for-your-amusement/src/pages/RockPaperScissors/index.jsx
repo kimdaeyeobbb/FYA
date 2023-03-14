@@ -8,6 +8,9 @@ import ChoiceRock from '../../assets/images/choice_rock.svg';
 import ChoiceScissors from '../../assets/images/choice_scissors.svg';
 import ChoicePaper from '../../assets/images/choice_paper.svg';
 import Rock from '../../assets/images/rock.svg';
+import Scissors from '../../assets/images/scissors.svg';
+import Paper from '../../assets/images/paper.svg'
+import BlankImg from '../../assets/images/blank_img.png'
 
 export default function RockPaperScissors() {
   const rspCoords = {
@@ -26,6 +29,12 @@ export default function RockPaperScissors() {
     보: -1,
   };
 
+  const userChoice = {
+      바위: Rock,
+      가위: Scissors,
+      보: Paper
+  }
+
   const computerChoice = (imgCoord) => {
     return Object.entries(rspCoords).find(function (v) {
       return v[1] === imgCoord;
@@ -37,15 +46,14 @@ export default function RockPaperScissors() {
     const [imgCoord, setImgCoord] = useState(rspCoords.바위);
     const [score, setScore] = useState(0);
     const [comScore, setComScore] = useState(0);
+    const [userRSP, setUserRSP] = useState(BlankImg);
     const interval = useRef();
 
     useEffect(() => {
-      // componentDidMount, componentDidUpdate 역할(1대1 대응은 아님)
-      console.log('다시 실행');
+      // console.log('다시 실행');
       interval.current = setInterval(changeHand, 100);
       return () => {
-        // componentWillUnmount 역할
-        console.log('종료');
+        // console.log('종료');
         clearInterval(interval.current);
       };
     }, [imgCoord]);
@@ -61,6 +69,13 @@ export default function RockPaperScissors() {
     };
 
     const onClickBtn = (choice) => () => {
+        if(choice == '가위'){
+            setUserRSP(userChoice.가위);
+        } else if (choice == '바위'){
+            setUserRSP(userChoice.바위);
+        } else if (choice == '보'){
+            setUserRSP(userChoice.보);
+        }
       if (interval.current) {
         clearInterval(interval.current);
         interval.current = null;
@@ -107,11 +122,12 @@ export default function RockPaperScissors() {
             background: `url(${RSPimg}) ${imgCoord} 0`,
             width: 359,
             height: 322,
-              display: "inline-block"
+              marginTop:80
+              // display: "inline-block"
           }}
-        />
+        ></div>
               <div style={{background:"#818181", width:1, height:500}}></div>
-          <img src={Rock}/>
+          <img src={userRSP} />
           </div>
         <div style={{display: "flex", justifyContent:"space-evenly", marginTop:165}}>
           <button
