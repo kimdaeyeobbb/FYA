@@ -5,14 +5,16 @@ import {
 } from '../../components/Main/style';
 
 export const TopBar = styled(MainBtnsSection)`
+  height: 168px;
   justify-content: end;
   margin-bottom: 98px;
 `;
 
 export const Button = styled(MainRandomGameBtn)``;
 
-export const Result = styled.section`
+export const ResultSection = styled.section`
   margin-right: auto;
+  height: 230px;
 
   & :nth-child(6) {
     margin-right: 0;

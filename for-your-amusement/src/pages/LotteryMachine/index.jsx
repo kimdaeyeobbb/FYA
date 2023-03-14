@@ -48,13 +48,6 @@ export default function LotteryMachine() {
       background = '#FF7408';
     }
 
-    const BallDetail = () => {
-      return (
-        <>
-          <div style={background}></div>
-        </>
-      );
-    };
     return (
       // <div className="ball" style={{ background }}>{number}</div>
       <S.BallDetail style={{ backgroundColor: background }}>
@@ -107,18 +100,18 @@ export default function LotteryMachine() {
   return (
     <GameLayout>
       <GameHeader gameTitle='로또추첨기' />
-      {/*<Ball/>*/}
-      {/* <div>당첨 숫자</div> */}
       <S.TopBar>
         {redo && <S.Button onClick={onClickRedo}>한 번 더!</S.Button>}
       </S.TopBar>
-      <S.Result id='result'>
+      <S.ResultSection id='result'>
         {winBalls.map((v) => (
           <Ball key={v} number={v} />
         ))}
-      </S.Result>
-      <S.BonusText id='bonus'>보너스!</S.BonusText>
-      {bonus && <Ball number={bonus} onClick={onClickRedo} />}
+      </S.ResultSection>
+      <S.ResultSection>
+        <S.BonusText id='bonus'>보너스!</S.BonusText>
+        {bonus && <Ball number={bonus} onClick={onClickRedo} />}
+      </S.ResultSection>
       <GameCommon gameDesc='로또 번호를 하나씩 차례대로 선택하고 로또 번호와 일치하는 번호가 가장 많은 팀이 승리합니다.' />
     </GameLayout>
   );
