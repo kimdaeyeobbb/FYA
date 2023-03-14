@@ -1,25 +1,35 @@
-import React, { useState, useEffect, useRef, useMemo, useCallback, memo} from "react";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
-import * as S from './style'
-import GameHeader from "../../components/GameHeader";
-import GameCommon from "../../components/GameCommon";
-import GameLayout from "../../components/GameLayout";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useMemo,
+  useCallback,
+  memo,
+} from 'react';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
+import * as S from './style';
+import GameHeader from '../../components/GameHeader';
+import GameCommon from '../../components/GameCommon';
+import GameLayout from '../../components/GameLayout';
 
 export default function LotteryMachine() {
   /* 로또 당첨숫자 뽑기 */
   const getWinNumbers = () => {
     console.log('당첨숫자');
-    const candidate = Array(45).fill().map((v, i) => i + 1);
+    const candidate = Array(45)
+      .fill()
+      .map((v, i) => i + 1);
     const shuffle = [];
     while (candidate.length > 0) {
-      shuffle.push(candidate.splice(Math.floor(Math.random() * candidate.length), 1)[0]);
+      shuffle.push(
+        candidate.splice(Math.floor(Math.random() * candidate.length), 1)[0]
+      );
     }
     const bonusNumber = shuffle[shuffle.length - 1];
     const winNumbers = shuffle.slice(0, 6).sort((p, c) => p - c);
     return [...winNumbers, bonusNumber];
-  }
-
+  };
 
   /* 로또 공 - 함수 컴포넌트 (memo쓰면 pure component) */
   const Ball = memo(({ number }) => {
@@ -32,31 +42,28 @@ export default function LotteryMachine() {
       background = '#EE7A76';
     } else if (number <= 28) {
       background = '#AAAAAA';
-    } else if (number <=35){
+    } else if (number <= 35) {
       background = '#B8D75B';
-    } else if (number <=42){
+    } else if (number <= 42) {
       background = '#B121B6';
     } else {
       background = '#FF7408';
     }
 
-
-
-    const BallDetail = () =>{
+    const BallDetail = () => {
       return (
-          <>
-            <div style={background}>
-            </div>
-          </>
-      )
-    }
+        <>
+          <div style={background}></div>
+        </>
+      );
+    };
     return (
-        // <div className="ball" style={{ background }}>{number}</div>
-        <S.BallDetail>{number}</S.BallDetail>
-    )
+      // <div className="ball" style={{ background }}>{number}</div>
+      <S.BallDetail>{number}</S.BallDetail>
+    );
   });
 
-/* Lotto 추첨 */
+  /* Lotto 추첨 */
   const lottoNumbers = useMemo(() => getWinNumbers(), []);
   const [winNumbers, setWinNumbers] = useState(lottoNumbers);
   const [winBalls, setWinBalls] = useState([]);
@@ -97,26 +104,20 @@ export default function LotteryMachine() {
     timeouts.current = [];
   }, [winNumbers]);
 
-
-
   return (
-      <>
-        <Header/>
-
-
-        <GameLayout>
-          <GameHeader gameTitle='로또추첨기' />
-          {/*<Ball/>*/}
-          <div>당첨 숫자</div>
-          {redo && <button onClick={onClickRedo}>한 번 더!</button>}
-          <div id="결과창">
-            {winBalls.map((v) => <Ball key={v} number={v} />)}
-          </div>
-          <div>보너스!</div>
-          {bonus && <Ball number={bonus} onClick={onClickRedo} />}
-          <GameCommon gameDesc='로또 번호를 하나씩 차례대로 선택하고 로또 번호와 일치하는 번호가 가장 많은 팀이 승리합니다.' />
-        </GameLayout>
-        <Footer/>
-      </>
-  )
+    <GameLayout>
+      <GameHeader gameTitle='로또추첨기' />
+      {/*<Ball/>*/}
+      <div>당첨 숫자</div>
+      {redo && <button onClick={onClickRedo}>한 번 더!</button>}
+      <div id='결과창'>
+        {winBalls.map((v) => (
+          <Ball key={v} number={v} />
+        ))}
+      </div>
+      <div>보너스!</div>
+      {bonus && <Ball number={bonus} onClick={onClickRedo} />}
+      <GameCommon gameDesc='로또 번호를 하나씩 차례대로 선택하고 로또 번호와 일치하는 번호가 가장 많은 팀이 승리합니다.' />
+    </GameLayout>
+  );
 }
