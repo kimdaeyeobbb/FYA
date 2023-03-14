@@ -4,6 +4,7 @@ import Footer from '../../components/Footer'
 import GameHeader from "../../components/GameHeader";
 import GameCommon from "../../components/GameCommon";
 import GameLayout from "../../components/GameLayout";
+import "./style.css";
 
 export default function ReactionVelocityCheck() {
   const [state, setState] = useState('waiting');
@@ -60,12 +61,12 @@ export default function ReactionVelocityCheck() {
       <Header />
       <GameLayout>
         <GameHeader gameTitle='반응속도체크' />
-        <div id='screen' className={state} onClick={onClickScreen}>
+        <div id='screen' className={state} onClick={onClickScreen} style={{}}>
           {message}
         </div>
 
         {renderAverage()}
-        <renderAverage/>
+        {/*<renderAverage/>*/}
         <GameCommon gameDesc='시각적 자극에 대한 반응 속도를 알 수 있는 간단한 게임입니다. 빨간색 원이 노란색 원으로 바뀌는 순간, 그 즉시 클릭하세요.' />
       </GameLayout>
       <Footer/>
