@@ -32,7 +32,7 @@ export const GameDetailTitle = styled.strong`
 
 export const GameDetailDesc = styled.p`
   margin-top: 30px;
-  max-width: 700px;
+  max-width: 760px;
   font: normal normal normal 20px/30px Noto Sans CJK KR;
   word-break: normal;
 `;
