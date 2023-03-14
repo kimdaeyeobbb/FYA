@@ -1,82 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 import DefaultImg from '../../assets/images/default_image.svg';
-import reactionThumbnail from '../../assets/images/reactionThumbnail_img.png';
-import lottoThumbnail from '../../assets/images/lottoThumbnail_img.png';
-import rspThumbnail from '../../assets/images/rspThumbnail_img.png';
+
 import * as S from './style';
 
-export const game_data = [
-  {
-    id: 1,
-    title: '반응속도체크',
-    thumbnail: reactionThumbnail,
-  },
-  {
-    id: 2,
-    title: '가위바위보',
-    thumbnail: rspThumbnail,
-  },
-  {
-    id: 3,
-    title: '로또추첨기',
-    thumbnail: lottoThumbnail,
-  },
-  {
-    id: 4,
-    title: '',
-    thumbnail: '',
-  },
-  {
-    id: 5,
-    title: '',
-    thumbnail: '',
-  },
-  {
-    id: 6,
-    title: '',
-    thumbnail: '',
-  },
-  {
-    id: 7,
-    title: '',
-    thumbnail: '',
-  },
-  {
-    id: 8,
-    title: '',
-    thumbnail: '',
-  },
-  {
-    id: 9,
-    title: '',
-    thumbnail: '',
-  },
-  {
-    id: 10,
-    title: '',
-    thumbnail: '',
-  },
-  {
-    id: 11,
-    title: '',
-    thumbnail: '',
-  },
-  {
-    id: 12,
-    title: '',
-    thumbnail: '',
-  },
-];
-
-export default function Main() {
-  const [gameData, setGameData] = useState([]);
-
-  useEffect(() => {
-    setGameData(game_data);
-  }, []);
-
-  console.log(gameData);
+export default function Main({ games }) {
+  const [gameData, setGameData] = useState(games);
 
   return (
     <S.MainContainer>
@@ -90,14 +20,14 @@ export default function Main() {
         <S.MainRandomGameBtn type='button'>랜덤 게임뽑기</S.MainRandomGameBtn>
       </S.MainBtnsSection>
       <S.MainGameListContainer>
-        {gameData.map((data) => (
-          <S.MainGameList>
-            <Link to='/'>
+        {gameData.map((game) => (
+          <S.MainGameList key={uuidv4()}>
+            <Link to={`${game.path}`}>
               <S.MainGameThumbnail
-                src={data.thumbnail || DefaultImg}
-                alt={data.title || 'Comming Soon'}
+                src={game.thumbnail || DefaultImg}
+                alt={game.title || 'Comming Soon'}
               />
-              <S.MainGameTitle>{data.title || 'Comming Soon'}</S.MainGameTitle>
+              <S.MainGameTitle>{game.title || 'Comming Soon'}</S.MainGameTitle>
             </Link>
           </S.MainGameList>
         ))}
