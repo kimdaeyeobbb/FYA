@@ -113,9 +113,12 @@ export default function RockPaperScissors() {
           컴퓨터: {comScore} VS 나: {score}
         </div>
         {/*<div id="computer" style={{ background: `url(https://en.pimg.jp/023/182/267/1/23182267.jpg) ${imgCoord} 0`, width: 142, height:200}} />*/}
+          <div style={{display:"flex", justifyContent:"space-around", fontSize: 30, fontWeight:"bold", opacity:1}}>
+            <div>computer</div>
+            <div>user</div>
+          </div>
           <div style={{display: "flex", justifyContent:"space-evenly"
           }}>
-
         <div
           id='computer'
           style={{
