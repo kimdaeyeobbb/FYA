@@ -34,10 +34,21 @@ export default function UserSignUp() {
   }, [userId]);
 
   useEffect(() => {
-    const passwordRex =
-        /^[a-zA-Z0-9]{8,20}$/;
+    const nameRex = /^[a-z0-9]{6,20}/;
 
-    if (!passwordRex.test(password)) {
+    if (!nameRex.test(name) && name !== '') {
+      setNameError('6~20자의 영문 소문자+숫자만 사용 가능합니다.');
+      setNameValid(false);
+    } else {
+      setNameError('');
+      setNameValid(true);
+    }
+  }, [name]);
+
+  useEffect(() => {
+    const passwordRex = /^[a-zA-Z0-9]{8,20}$/;
+
+    if (!passwordRex.test(password) && password !== '') {
       setPasswordError(
         '8~16자의 영문 대 소문자, 숫자, 특수문자만 사용 가능합니다.'
       );
