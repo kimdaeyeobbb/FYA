@@ -1,7 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
-import Header from '../../components/Header';
+import { useState, useRef, useEffect } from 'react';
 import * as S from './style';
-import Footer from '../../components/Footer';
 import GameHeader from '../../components/GameHeader';
 import GameLayout from '../../components/GameLayout';
 import GameCommon from '../../components/GameCommon';
@@ -108,9 +106,46 @@ export default function RockPaperScissors() {
           }}
         />
         <div>
-            <button id="rock" className="btn" onClick={onClickBtn('바위')} style={{background: `url(${ChoiceRock}) 0` ,width: 180, height:180, marginRight:40, marginLeft:300, marginTop:165}}>바위</button>
-            <button id="scissor" className="btn" onClick={onClickBtn('가위')} style={{background: `url(${ChoiceScissors}) 0` ,width: 180, height:180, marginRight:40}} >가위</button>
-            <button id="paper" className="btn" onClick={onClickBtn('보')} style={{background: `url(${ChoicePaper}) 0` ,width: 180, height:180}}>보</button>
+          <button
+            id='rock'
+            className='btn'
+            onClick={onClickBtn('바위')}
+            style={{
+              background: `url(${ChoiceRock}) 0`,
+              width: 180,
+              height: 180,
+              marginRight: 40,
+              marginLeft: 300,
+              marginTop: 165,
+            }}
+          >
+            바위
+          </button>
+          <button
+            id='scissor'
+            className='btn'
+            onClick={onClickBtn('가위')}
+            style={{
+              background: `url(${ChoiceScissors}) 0`,
+              width: 180,
+              height: 180,
+              marginRight: 40,
+            }}
+          >
+            가위
+          </button>
+          <button
+            id='paper'
+            className='btn'
+            onClick={onClickBtn('보')}
+            style={{
+              background: `url(${ChoicePaper}) 0`,
+              width: 180,
+              height: 180,
+            }}
+          >
+            보
+          </button>
         </div>
         <div>{result}</div>
       </>
