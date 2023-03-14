@@ -1,10 +1,8 @@
-import React, { useState, useRef } from 'react';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
+import { useState, useRef } from 'react';
 import GameHeader from '../../components/GameHeader';
 import GameCommon from '../../components/GameCommon';
 import GameLayout from '../../components/GameLayout';
-import './style.css';
+import * as S from './style';
 
 export default function ReactionVelocityCheck() {
   const [state, setState] = useState('waiting');
