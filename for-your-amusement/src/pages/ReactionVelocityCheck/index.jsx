@@ -1,10 +1,13 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useContext } from 'react';
 import GameHeader from '../../components/GameHeader';
 import GameCommon from '../../components/GameCommon';
 import GameLayout from '../../components/GameLayout';
 import * as S from './style';
+import { WidthContext } from '../../context/WidthContext';
 
 export default function ReactionVelocityCheck() {
+  const { width } = useContext(WidthContext);
+
   const [state, setState] = useState('waiting');
   const [message, setMessage] = useState(
     '시작하시려면 현재 화면을 클릭하세요.'
@@ -61,7 +64,11 @@ export default function ReactionVelocityCheck() {
     <GameLayout>
       <GameHeader gameTitle='반응속도체크' />
       <S.GameMain>
-        <S.GameScreen className={state} onClick={onClickScreen} style={{}}>
+        <S.GameScreen
+          className={state}
+          onClick={onClickScreen}
+          style={{ width: width }}
+        >
           <S.GameMessage>{message}</S.GameMessage>
           {/* TargetCircle은 게임 시작과 끝 사이에만 렌더링이 되도록 조건부 렌더링을 구현하시는 것이 좋을 것 같습니다 */}
           {/* 만일 조건부 렌더링을 하였음에도 불구하고 게임이 시작되기 이전에 레이아웃을 잡아먹는다면 display: none을 시작과 끝에 적용하세요  */}

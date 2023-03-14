@@ -6,7 +6,7 @@ export const GameMain = styled.section`
 `;
 
 export const GameScreen = styled.div`
-  width: 1920px;
+  max-width: 1920px;
   height: 800px;
   position: absolute;
   top: 308px;
