@@ -94,41 +94,33 @@ function App() {
 
   return (
     <Router>
-      {isLogin ? (
-        <>
-          <Header />
-          <WidthProvider>
-            <Routes>
-              <Route path='/' element={<Home games={games} />} />
-              {games.map((game) => (
-                <Route
-                  key={uuidv4()}
-                  path={`${game.path}`}
-                  element={game.element}
-                />
-              ))}
-            </Routes>
-          </WidthProvider>
-          <Footer />
-        </>
-      ) : (
-        <Routes>
-          <Route path='/'>
-            <Route
-              index
-              element={
-                <>
-                  <Header />
-                  <Home games={games} />
-                  <Footer />
-                </>
-              }
-            />
-          </Route>
-          <Route path='/userlogin' element={<UserLogin />} />
-          <Route path='/usersignup' element={<UserSignUp />} />
-        </Routes>
-      )}
+      <Routes>
+        <Route
+          path='/'
+          element={
+            <>
+              <Header />
+              <Home games={games} />
+              <Footer />
+            </>
+          }
+        />
+        {games.map((game) => (
+          <Route
+            key={uuidv4()}
+            path={`${game.path}`}
+            element={
+              <WidthProvider>
+                <Header />
+                {game.element}
+                <Footer />
+              </WidthProvider>
+            }
+          />
+        ))}
+        <Route path='/userlogin' element={<UserLogin />} />
+        <Route path='/usersignup' element={<UserSignUp />} />
+      </Routes>
     </Router>
   );
 }
