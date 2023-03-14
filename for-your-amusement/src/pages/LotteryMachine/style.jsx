@@ -5,7 +5,7 @@ import {
 } from '../../components/Main/style';
 
 export const TopBar = styled(MainBtnsSection)`
-  height: 168px;
+  height: 80px;
   justify-content: end;
   margin-bottom: 98px;
 `;
