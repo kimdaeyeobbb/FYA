@@ -103,7 +103,7 @@ export default function RockPaperScissors() {
           id='computer'
           style={{
             background: `url(${RSPimg}) ${imgCoord} 0`,
-            width: 300,
+            width: 359,
             height: 322,
           }}
         />
