@@ -7,6 +7,7 @@ import RSPimg from '../../assets/images/RSPset_img.svg';
 import ChoiceRock from '../../assets/images/choice_rock.svg';
 import ChoiceScissors from '../../assets/images/choice_scissors.svg';
 import ChoicePaper from '../../assets/images/choice_paper.svg';
+import Rock from '../../assets/images/rock.svg';
 
 export default function RockPaperScissors() {
   const rspCoords = {
@@ -97,15 +98,22 @@ export default function RockPaperScissors() {
           컴퓨터: {comScore}점 vs 나: {score}점
         </div>
         {/*<div id="computer" style={{ background: `url(https://en.pimg.jp/023/182/267/1/23182267.jpg) ${imgCoord} 0`, width: 142, height:200}} />*/}
+          <div style={{display: "flex", justifyContent:"space-evenly"
+          }}>
+
         <div
           id='computer'
           style={{
             background: `url(${RSPimg}) ${imgCoord} 0`,
             width: 359,
             height: 322,
+              display: "inline-block"
           }}
         />
-        <div>
+              <div style={{background:"#818181", width:1, height:500}}></div>
+          <img src={Rock}/>
+          </div>
+        <div style={{display: "flex", justifyContent:"space-evenly", marginTop:165}}>
           <button
             id='rock'
             className='btn'
@@ -114,9 +122,8 @@ export default function RockPaperScissors() {
               background: `url(${ChoiceRock}) 0`,
               width: 180,
               height: 180,
-              marginRight: 40,
-              marginLeft: 300,
-              marginTop: 165,
+              // marginRight: 40,
+              // marginLeft: 300,
             }}
           >
             바위
@@ -129,7 +136,7 @@ export default function RockPaperScissors() {
               background: `url(${ChoiceScissors}) 0`,
               width: 180,
               height: 180,
-              marginRight: 40,
+              // marginRight: 40,
             }}
           >
             가위
