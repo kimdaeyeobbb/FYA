@@ -9,10 +9,15 @@ import RSPimg from '../../assets/images/RSPset_img.svg';
 
 export default function RockPaperScissors() {
   const rspCoords = {
+    /* 좌표 */
+    // 바위: '0',
+    // 가위: '-142px',
+    // 보: '-284px',
     바위: '0',
-    가위: '-142px',
-    보: '-284px',
+    가위: '-496px',
+    보: '-892px'
   };
+
 
   const scores = {
     가위: 1,
@@ -88,8 +93,8 @@ export default function RockPaperScissors() {
     return (
         <>
           <div>컴퓨터: {comScore}점 vs 나: {score}점</div>
-          <div id="computer" style={{ background: `url(https://en.pimg.jp/023/182/267/1/23182267.jpg) ${imgCoord} 0`, width: 142, height:200}} />
-          <div id="computer" style={{ background: `url(${RSPimg}) ${imgCoord} 0`, width: 900, height:322}} />
+          {/*<div id="computer" style={{ background: `url(https://en.pimg.jp/023/182/267/1/23182267.jpg) ${imgCoord} 0`, width: 142, height:200}} />*/}
+          <div id="computer" style={{ background: `url(${RSPimg}) ${imgCoord} 0`, width: 300, height:322}} />
           <div>
             <button id="rock" className="btn" onClick={onClickBtn('바위')}>바위</button>
             <button id="scissor" className="btn" onClick={onClickBtn('가위')}>가위</button>
