@@ -1,17 +1,18 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { v4 as uuidv4 } from 'uuid';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import UserLogin from './pages/UserLogin';
 import UserSignUp from './pages/UserSignUp';
 import ReactionVelocityCheck from './pages/ReactionVelocityCheck';
-import LotteryMachine from './pages/LotteryMachine';
-import RockPaperScissors from './pages/RockPaperScissors';
-import { useState } from 'react';
 import reactionThumbnail from './assets/images/reactionThumbnail_img.png';
-import rspThumbnail from './assets/images/rspThumbnail_img.png';
+import LotteryMachine from './pages/LotteryMachine';
 import lottoThumbnail from './assets/images/lottoThumbnail_img.png';
+import RockPaperScissors from './pages/RockPaperScissors';
+import rspThumbnail from './assets/images/rspThumbnail_img.png';
+import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { WidthProvider } from './context/WidthContext';
 
 function App() {
   const [isLogin, setIsLogin] = useState(true);
@@ -96,16 +97,18 @@ function App() {
       {isLogin ? (
         <>
           <Header />
-          <Routes>
-            <Route path='/' element={<Home games={games} />} />
-            {games.map((game) => (
-              <Route
-                key={uuidv4()}
-                path={`${game.path}`}
-                element={game.element}
-              />
-            ))}
-          </Routes>
+          <WidthProvider>
+            <Routes>
+              <Route path='/' element={<Home games={games} />} />
+              {games.map((game) => (
+                <Route
+                  key={uuidv4()}
+                  path={`${game.path}`}
+                  element={game.element}
+                />
+              ))}
+            </Routes>
+          </WidthProvider>
           <Footer />
         </>
       ) : (
