@@ -9,14 +9,11 @@ import LotteryMachine from './pages/LotteryMachine';
 import lottoThumbnail from './assets/images/lottoThumbnail_img.png';
 import RockPaperScissors from './pages/RockPaperScissors';
 import rspThumbnail from './assets/images/rspThumbnail_img.png';
-import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { WidthProvider } from './context/WidthContext';
 
 function App() {
-  const [isLogin, setIsLogin] = useState(true);
-
   const games = [
     {
       title: '반응속도체크',
