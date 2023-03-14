@@ -6,6 +6,9 @@ import GameHeader from '../../components/GameHeader';
 import GameLayout from '../../components/GameLayout';
 import GameCommon from '../../components/GameCommon';
 import RSPimg from '../../assets/images/RSPset_img.svg';
+import ChoiceRock from '../../assets/images/choice_rock.svg';
+import ChoiceScissors from '../../assets/images/choice_scissors.svg';
+import ChoicePaper from '../../assets/images/choice_paper.svg';
 
 export default function RockPaperScissors() {
   const rspCoords = {
@@ -70,10 +73,10 @@ export default function RockPaperScissors() {
         } else if ([-1, 2].includes(diff)) {
           setResult('이겼습니다!');
           setScore((prevScore) => prevScore + 1);
-          setComScore((prevScore) => prevScore - 1);
+          // setComScore((prevScore) => prevScore - 1);
         } else {
           setResult('졌습니다!');
-          setScore((prevScore) => prevScore - 1);
+          // setScore((prevScore) => prevScore - 1);
           setComScore((prevScore) => prevScore + 1);
         }
         setTimeout(() => {
@@ -105,15 +108,9 @@ export default function RockPaperScissors() {
           }}
         />
         <div>
-          <button id='rock' className='btn' onClick={onClickBtn('바위')}>
-            바위
-          </button>
-          <button id='scissor' className='btn' onClick={onClickBtn('가위')}>
-            가위
-          </button>
-          <button id='paper' className='btn' onClick={onClickBtn('보')}>
-            보
-          </button>
+            <button id="rock" className="btn" onClick={onClickBtn('바위')} style={{background: `url(${ChoiceRock}) 0` ,width: 180, height:180, marginRight:40, marginLeft:300, marginTop:165}}>바위</button>
+            <button id="scissor" className="btn" onClick={onClickBtn('가위')} style={{background: `url(${ChoiceScissors}) 0` ,width: 180, height:180, marginRight:40}} >가위</button>
+            <button id="paper" className="btn" onClick={onClickBtn('보')} style={{background: `url(${ChoicePaper}) 0` ,width: 180, height:180}}>보</button>
         </div>
         <div>{result}</div>
       </>
