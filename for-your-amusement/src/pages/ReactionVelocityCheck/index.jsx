@@ -6,7 +6,9 @@ import * as S from './style';
 
 export default function ReactionVelocityCheck() {
   const [state, setState] = useState('waiting');
-  const [message, setMessage] = useState('클릭해서 시작하세요');
+  const [message, setMessage] = useState(
+    '시작하시려면 현재 화면을 클릭하세요.'
+  );
   const [result, setResult] = useState([]);
   const timeout = useRef(null);
   const startTime = useRef();
@@ -43,6 +45,7 @@ export default function ReactionVelocityCheck() {
     setResult([]);
   };
 
+  // 지형: 게임이 끝난 뒤 평균 반응속도에 대한 결과값은 message로 나타내는 것이 좋을 것 같습니다
   const renderAverage = () => {
     return result.length === 0 ? null : (
       <>
@@ -57,13 +60,20 @@ export default function ReactionVelocityCheck() {
   return (
     <GameLayout>
       <GameHeader gameTitle='반응속도체크' />
-      <div id='screen' className={state} onClick={onClickScreen} style={{}}>
-        {message}
-      </div>
+      <S.GameMain>
+        <S.GameScreen className={state} onClick={onClickScreen} style={{}}>
+          <S.GameMessage>{message}</S.GameMessage>
+          {/* TargetCircle은 게임 시작과 끝 사이에만 렌더링이 되도록 조건부 렌더링을 구현하시는 것이 좋을 것 같습니다 */}
+          {/* 만일 조건부 렌더링을 하였음에도 불구하고 게임이 시작되기 이전에 레이아웃을 잡아먹는다면 display: none을 시작과 끝에 적용하세요  */}
+          <S.TargetCircle></S.TargetCircle>
+        </S.GameScreen>
+      </S.GameMain>
 
       {renderAverage()}
       {/*<renderAverage/>*/}
-      <GameCommon gameDesc='시각적 자극에 대한 반응 속도를 알 수 있는 간단한 게임입니다. 빨간색 원이 노란색 원으로 바뀌는 순간, 그 즉시 클릭하세요.' />
+      <GameCommon
+        gameDesc={`시각적 자극에 대한 반응 속도를 알 수 있는 간단한 게임입니다.\n 빨간색 원이 노란색 원으로 바뀌는 순간, 그 즉시 클릭하세요.`}
+      />
     </GameLayout>
   );
 }
