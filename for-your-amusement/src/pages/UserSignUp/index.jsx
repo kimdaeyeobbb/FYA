@@ -21,6 +21,12 @@ export default function UserSignUp() {
   const [passwordError, setPasswordError] = useState('');
   const [passwordValid, setPasswordValid] = useState(false);
 
+  const [pwCheck, setPwCheck] = useState('');
+  const [pwcheckError, setPwCheckError] = useState('');
+  const [pwCheckValid, setPwCheckValid] = useState(false);
+
+
+
   useEffect(() => {
     const userIdRex = /^[a-z0-9]{6,20}/;
 
@@ -58,6 +64,16 @@ export default function UserSignUp() {
       setPasswordValid(true);
     }
   }, [password]);
+
+  useEffect(() => {
+    if(password != pwCheck){
+      setPwCheckError("비밀번호가 일치하지 않습니다.");
+      setPwCheckValid(false);
+    } else {
+      setPwCheckError('');
+      setPwCheckValid(true);
+    }
+  },[pwCheck]);
 
   return (
     <S.FormContainer>
@@ -108,11 +124,11 @@ export default function UserSignUp() {
           imgAlt='비밀번호 확인'
           placeholder='비밀번호 확인'
           onChange={(e) => {
-            setPassword(e.target.value);
+            setPwCheck(e.target.value);
           }}
         />
-        {!passwordValid && (
-          <S.ErrMsg className='message'>{passwordError}</S.ErrMsg>
+        {!pwCheckValid && (
+          <S.ErrMsg className='message'>{pwcheckError}</S.ErrMsg>
         )}
         <Button
           disabled={!userIdValid || !passwordValid ? true : false}
