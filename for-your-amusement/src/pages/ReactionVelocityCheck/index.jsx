@@ -12,7 +12,7 @@ export default function ReactionVelocityCheck() {
   const [message, setMessage] = useState(
     '시작하시려면 현재 화면을 클릭하세요.'
   );
-  const [result, setResult] = useState([]);
+  const [result, setResult] = useState(0);
   const timeout = useRef(null);
   const startTime = useRef();
   const endTime = useRef();
@@ -60,7 +60,7 @@ export default function ReactionVelocityCheck() {
       // 반응속도 체크
       endTime.current = new Date();
       setResult((prevResult) => {
-        return [...prevResult, endTime.current - startTime.current];
+        return endTime.current - startTime.current;
       }); // 예전 state를 참고하므로 함수형으로 써줄 것s
       setState('finish');
       // setMessage('클릭해서 시작하세요.');
@@ -84,9 +84,7 @@ export default function ReactionVelocityCheck() {
     ) : (
       <>
         <div ref={resultTxt}>
-          {`${(result.reduce((acc, cur) => acc + cur) / result.length).toFixed(
-            2
-          )}MS`}
+          {`${(result.toFixed(2))} MS`}
         </div>
         {/*<button onClick={onReset}>리셋</button>*/}
       </>
