@@ -19,7 +19,9 @@ export default function UserLogin() {
   useEffect(() => {
     const userIdRex = /^[a-z0-9]{6,20}/;
 
-    if (!userIdRex.test(userId) && userId === '') {
+    if (userId === ''){
+      setUserIdError('')
+    } else if (!userIdRex.test(userId)) {
       setUserIdError('아이디는 6~20자 이내입니다.');
       setUserIdValid(false);
     } else {
@@ -31,7 +33,9 @@ export default function UserLogin() {
   useEffect(() => {
     const passwordRex = /^[a-zA-Z0-9]{8,20}$/;
 
-    if (!passwordRex.test(password)) {
+  if (password == ''){
+    setPasswordError('');
+  } else if (!passwordRex.test(password)) {
       setPasswordError('비밀번호는 8~16자 이내입니다.');
       setPasswordValid(false);
     } else {
