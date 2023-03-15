@@ -108,8 +108,8 @@ export default function LotteryMachine() {
           <Ball key={v} number={v} />
         ))}
       </S.ResultSection>
+      <S.BonusText id='bonus'>보너스!</S.BonusText>
       <S.ResultSection>
-        <S.BonusText id='bonus'>보너스!</S.BonusText>
         {bonus && <Ball number={bonus} onClick={onClickRedo} />}
       </S.ResultSection>
       <GameCommon gameDesc='로또 번호를 하나씩 차례대로 선택하고 로또 번호와 일치하는 번호가 가장 많은 팀이 승리합니다.' />
