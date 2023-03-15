@@ -35,7 +35,7 @@ export const MainGameTypeBtn = styled.button`
 `;
 
 export const MainRandomGameBtn = styled.button`
-  width: 220px;
+  width: 240px;
   height: 70px;
   background: #6b8cbf 0% 0% no-repeat padding-box;
   font: normal normal normal 20px/29px Noto Sans CJK KR;
@@ -70,7 +70,7 @@ export const MainGameTitle = styled.strong`
   text-align: center;
   font: normal normal normal 30px/45px Noto Sans CJK KR;
   letter-spacing: 0;
-  color: #FFF;
+  color: #fff;
 `;
 
 export const MainGameThumbnail = styled.img`
