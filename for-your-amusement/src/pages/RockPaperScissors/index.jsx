@@ -3,14 +3,17 @@ import * as S from './style';
 import GameHeader from '../../components/GameHeader';
 import GameLayout from '../../components/GameLayout';
 import GameCommon from '../../components/GameCommon';
-import RSPimg from '../../assets/images/RSPset_img.svg';
-import ChoiceRock from '../../assets/images/choice_rock.svg';
-import ChoiceScissors from '../../assets/images/choice_scissors.svg';
-import ChoicePaper from '../../assets/images/choice_paper.svg';
 import Rock from '../../assets/images/rock.svg';
 import Scissors from '../../assets/images/scissors.svg';
-import Paper from '../../assets/images/paper.svg'
-import BlankImg from '../../assets/images/blank_img.png'
+import Paper from '../../assets/images/paper.svg';
+import BeforeRock from '../../assets/images/choice_rock.svg';
+import BeforeScissors from '../../assets/images/choice_scissors.svg';
+import BeforePaper from '../../assets/images/choice_paper.svg';
+
+import AfterRock from '../../assets/images/choice_rock_after.svg';
+import AfterScissors from '../../assets/images/choice_scissors_after.svg';
+import AfterPaper from '../../assets/images/choice_paper_after.svg';
+import BlankImg from '../../assets/images/blank_img.png';
 
 export default function RockPaperScissors() {
   const rspCoords = {
@@ -19,21 +22,21 @@ export default function RockPaperScissors() {
     // 가위: '-142px',
     // 보: '-284px',
     바위: '0',
-    가위: '-496px',
-    보: '-892px',
+    가위: '-428',
+    보: '-892',
   };
 
   const scores = {
-    가위: 1,
     바위: 0,
+    가위: 1,
     보: -1,
   };
 
   const userChoice = {
-      바위: Rock,
-      가위: Scissors,
-      보: Paper
-  }
+    바위: Rock,
+    가위: Scissors,
+    보: Paper,
+  };
 
   const computerChoice = (imgCoord) => {
     return Object.entries(rspCoords).find(function (v) {
@@ -42,7 +45,13 @@ export default function RockPaperScissors() {
   };
 
   const RSP = () => {
+    // 결과 확인용 result
     const [result, setResult] = useState('');
+    const [select, setSelect] = useState({
+      바위: false,
+      가위: false,
+      보: false,
+    });
     const [imgCoord, setImgCoord] = useState(rspCoords.바위);
     const [score, setScore] = useState(0);
     const [comScore, setComScore] = useState(0);
@@ -68,14 +77,14 @@ export default function RockPaperScissors() {
       }
     };
 
-    const onClickBtn = (choice) => () => {
-        if(choice == '가위'){
-            setUserRSP(userChoice.가위);
-        } else if (choice == '바위'){
-            setUserRSP(userChoice.바위);
-        } else if (choice == '보'){
-            setUserRSP(userChoice.보);
-        }
+    const handleClickBtn = (choice) => () => {
+      if (choice === '가위') {
+        setUserRSP((prev) => (prev = userChoice.가위));
+      } else if (choice === '바위') {
+        setUserRSP((prev) => (prev = userChoice.바위));
+      } else if (choice === '보') {
+        setUserRSP((prev) => (prev = userChoice.보));
+      }
       if (interval.current) {
         clearInterval(interval.current);
         interval.current = null;
@@ -98,82 +107,65 @@ export default function RockPaperScissors() {
         }, 1000);
       }
     };
-    //
-    // const styles = {
-    //   computer: {
-    //     width: 142,
-    //     height: 200,
-    //     background-position: 0 0
-    //   }
-    // }
+
+    const handleToggle = (e) => {
+      const myChoice = e.target.alt;
+      if (myChoice === '바위') {
+        setSelect((prev) => (prev = { 바위: true, 가위: false, 보: false }));
+      } else if (myChoice === '가위') {
+        setSelect((prev) => (prev = { 바위: false, 가위: true, 보: false }));
+      } else if (myChoice === '보') {
+        setSelect((prev) => (prev = { 바위: false, 가위: false, 보: true }));
+      }
+    };
 
     return (
       <>
-        <div style={{display:"inline-block",  width:240, height:80 ,background:"#6B8CBF"}}>
-          컴퓨터: {comScore} VS 나: {score}
-        </div>
+        <S.TopBar>
+          <S.GameScoreContainer>
+            <S.GameScore>{`${comScore} : ${score}`}</S.GameScore>
+          </S.GameScoreContainer>
+        </S.TopBar>
+        <S.GameBoard>
+          <S.GameDisplay>
+            <S.ComputerDisplay>
+              <S.Player>Computer</S.Player>
+              <S.ComputerChoice coord={imgCoord}></S.ComputerChoice>
+            </S.ComputerDisplay>
+            <S.UserDisplay>
+              <S.Player>User</S.Player>
+              <S.UserChoice>
+                <S.UserChoiceImg src={userRSP} alt='' />
+              </S.UserChoice>
+            </S.UserDisplay>
+          </S.GameDisplay>
+          <S.GameControlBar>
+            <S.ChoiceBtn aria-label='바위' onClick={handleClickBtn('바위')}>
+              <S.ChoiceImg
+                onClick={(e) => handleToggle(e)}
+                src={select.바위 ? AfterRock : BeforeRock}
+                alt='바위'
+              />
+            </S.ChoiceBtn>
+            <S.ChoiceBtn aria-label='가위' onClick={handleClickBtn('가위')}>
+              <S.ChoiceImg
+                onClick={(e) => handleToggle(e)}
+                src={select.가위 ? AfterScissors : BeforeScissors}
+                alt='가위'
+              />
+            </S.ChoiceBtn>
+            <S.ChoiceBtn aria-label='보' onClick={handleClickBtn('보')}>
+              <S.ChoiceImg
+                onClick={(e) => handleToggle(e)}
+                src={select.보 ? AfterPaper : BeforePaper}
+                alt='보'
+              />
+            </S.ChoiceBtn>
+          </S.GameControlBar>
+          {/* 결과 확인용 */}
+          {/* <div>{result}</div> */}
+        </S.GameBoard>
         {/*<div id="computer" style={{ background: `url(https://en.pimg.jp/023/182/267/1/23182267.jpg) ${imgCoord} 0`, width: 142, height:200}} />*/}
-          <div style={{display:"flex", justifyContent:"space-around", fontSize: 30, fontWeight:"bold", opacity:1}}>
-            <div>computer</div>
-            <div>user</div>
-          </div>
-          <div style={{display: "flex", justifyContent:"space-evenly"
-          }}>
-        <div
-          id='computer'
-          style={{
-            background: `url(${RSPimg}) ${imgCoord} 0`,
-            width: 359,
-            height: 322,
-              marginTop:80
-              // display: "inline-block"
-          }}
-        ></div>
-              <div style={{background:"#818181", width:1, height:500}}></div>
-          <img src={userRSP} />
-          </div>
-        <div style={{display: "flex", justifyContent:"space-evenly", marginTop:165}}>
-          <button
-            id='rock'
-            className='btn'
-            onClick={onClickBtn('바위')}
-            style={{
-              background: `url(${ChoiceRock}) 0`,
-              width: 180,
-              height: 180,
-              // marginRight: 40,
-              // marginLeft: 300,
-            }}
-          >
-            바위
-          </button>
-          <button
-            id='scissor'
-            className='btn'
-            onClick={onClickBtn('가위')}
-            style={{
-              background: `url(${ChoiceScissors}) 0`,
-              width: 180,
-              height: 180,
-              // marginRight: 40,
-            }}
-          >
-            가위
-          </button>
-          <button
-            id='paper'
-            className='btn'
-            onClick={onClickBtn('보')}
-            style={{
-              background: `url(${ChoicePaper}) 0`,
-              width: 180,
-              height: 180,
-            }}
-          >
-            보
-          </button>
-        </div>
-        <div>{result}</div>
       </>
     );
   };
