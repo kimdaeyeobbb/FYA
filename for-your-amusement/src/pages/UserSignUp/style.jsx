@@ -35,8 +35,8 @@ export const LoginLink = styled(Link)`
   padding-top: 20px;
   color: #818181;
   font: normal normal 300 15px/22px Noto Sans CJK KR;
-
-  :hover {
-    text-decoration: underline;
-  }
+  text-decoration: underline;
+  //:hover {
+  //  text-decoration: underline;
+  //}
 `;
