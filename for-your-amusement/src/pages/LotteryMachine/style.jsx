@@ -24,8 +24,8 @@ export const ResultSection = styled.section`
 export const BallDetail = styled.div`
   position: relative;
   display: inline-block;
-  width: 230px;
-  height: 230px;
+  width: 160px;
+  height: 160px;
   margin-top: auto;
   margin-right: 46px;
   border-radius: 50%;
