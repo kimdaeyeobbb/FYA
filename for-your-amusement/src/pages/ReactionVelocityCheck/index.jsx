@@ -4,6 +4,7 @@ import GameCommon from '../../components/GameCommon';
 import GameLayout from '../../components/GameLayout';
 import * as S from './style';
 import { WidthContext } from '../../context/WidthContext';
+import { Helmet } from "react-helmet-async";
 
 export default function ReactionVelocityCheck() {
   const { width } = useContext(WidthContext);
@@ -93,6 +94,9 @@ export default function ReactionVelocityCheck() {
 
   return (
     <GameLayout>
+      <Helmet>
+        <title>반응속도체크</title>
+      </Helmet>
       <GameHeader gameTitle='반응속도체크' />
       <S.GameMain>
         <S.GameScreen
