@@ -10,6 +10,8 @@ import * as S from './style';
 import GameHeader from '../../components/GameHeader';
 import GameCommon from '../../components/GameCommon';
 import GameLayout from '../../components/GameLayout';
+import { Helmet } from "react-helmet-async";
+import He from "styled-components/dist/styled-components.browser.esm";
 
 export default function LotteryMachine() {
   /* 로또 당첨숫자 뽑기 */
@@ -98,6 +100,10 @@ export default function LotteryMachine() {
   }, [winNumbers]);
 
   return (
+      <>
+      <Helmet>
+        <title>로또추첨기</title>
+      </Helmet>
     <GameLayout>
       <GameHeader gameTitle='로또추첨기' />
       <S.TopBar>
@@ -114,5 +120,6 @@ export default function LotteryMachine() {
       </S.ResultSection>
       <GameCommon gameDesc='로또 번호를 하나씩 차례대로 선택하고 로또 번호와 일치하는 번호가 가장 많은 팀이 승리합니다.' />
     </GameLayout>
+      </>
   );
 }
