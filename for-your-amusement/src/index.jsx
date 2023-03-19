@@ -4,6 +4,7 @@ import App from './App';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import reset from 'styled-reset';
 import { theme } from './theme';
+import { HelmetProvider } from "react-helmet-async";
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -40,7 +41,9 @@ const container = document.getElementById('root');
 const root = createRoot(container);
 root.render(
   <ThemeProvider theme={theme}>
-    <GlobalStyle />
-    <App />
+      <GlobalStyle />
+      <HelmetProvider>
+          <App />
+      </HelmetProvider>
   </ThemeProvider>
 );
