@@ -50,6 +50,9 @@ export default function UserLogin() {
 
   return (
     <>
+      <Helmet>
+        <title>로그인</title>
+      </Helmet>
       <S.FormContainer>
         <S.PageTitle className='ir'>FYA 로그인 화면</S.PageTitle>
         <Link to='/'>
