@@ -14,6 +14,7 @@ import AfterRock from '../../assets/images/choice_rock_after.svg';
 import AfterScissors from '../../assets/images/choice_scissors_after.svg';
 import AfterPaper from '../../assets/images/choice_paper_after.svg';
 import BlankImg from '../../assets/images/blank_img.png';
+import { Helmet } from "react-helmet-async";
 
 export default function RockPaperScissors() {
   const rspCoords = {
@@ -121,6 +122,9 @@ export default function RockPaperScissors() {
 
     return (
       <>
+        <Helmet>
+          <title>가위바위보</title>
+        </Helmet>
         <S.TopBar>
           <S.GameScoreContainer>
             <S.GameScore>{`${comScore} : ${score}`}</S.GameScore>
