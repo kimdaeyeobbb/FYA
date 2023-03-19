@@ -46,7 +46,7 @@ export const MainRandomGameBtn = styled.button`
 export const MainGameListContainer = styled.ul`
   margin-top: 68px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
 `;
 
