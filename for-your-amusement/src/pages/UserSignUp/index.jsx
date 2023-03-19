@@ -7,6 +7,7 @@ import NameIcon from '../../assets/images/name_icon.svg';
 import PwIcon from '../../assets/images/PW_icon.png';
 import * as S from './style';
 import { Link } from 'react-router-dom';
+import { Helmet } from "react-helmet-async";
 
 export default function UserSignUp() {
   const [userId, setUserId] = useState('');
@@ -76,6 +77,10 @@ export default function UserSignUp() {
   },[pwCheck]);
 
   return (
+      <>
+        <Helmet>
+          <title>회원가입</title>
+        </Helmet>
     <S.FormContainer>
       <S.PageTitle className='ir'>FYA 회원가입 화면</S.PageTitle>
       <Link to='/'>
@@ -137,5 +142,6 @@ export default function UserSignUp() {
       </S.InputForm>
       <S.LoginLink to='/userlogin'>로그인</S.LoginLink>
     </S.FormContainer>
+      </>
   );
 }
