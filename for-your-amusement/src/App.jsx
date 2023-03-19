@@ -11,7 +11,8 @@ import RockPaperScissors from './pages/RockPaperScissors';
 import rspThumbnail from './assets/images/rspThumbnail_img.png';
 import { v4 as uuidv4 } from 'uuid';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { WidthProvider } from './context/WidthContext';
+import { WidthProvider } from './context/WidthContext'
+import {Helmet} from "react-helmet-async";
 
 function App() {
   const games = [
@@ -90,6 +91,10 @@ function App() {
   ];
 
   return (
+      <>
+        <Helmet>
+          <title>FYA</title>
+        </Helmet>
     <Router>
       <Routes>
         <Route
@@ -119,6 +124,7 @@ function App() {
         <Route path='/usersignup' element={<UserSignUp />} />
       </Routes>
     </Router>
+      </>
   );
 }
 export default App;
